@@ -50,7 +50,7 @@ function latest_post_permalink() {
 
 $content_width = '632';
 
-if( function_exists('register_sidebar') ) {
+/*if( function_exists('register_sidebar') ) {
 	register_sidebar( );
 	register_sidebar(
 		array(
@@ -64,7 +64,7 @@ if( function_exists('register_sidebar') ) {
     		'id' => 'sidebar-bottom'
 			) 
 		);
-}
+}*/
 
 // Content Filters
 function p2_get_at_name_map() {
@@ -97,7 +97,7 @@ function p2_get_at_name_map() {
 
 function mention_taxonomy() {
 	global $p2_custom_post_type;
-	register_taxonomy( 'mentions', $p2_custom_post_type, array( 'hierarchical' => false, 'label' => 'Mentions', 'query_var' => true, 'rewrite' => false ) );
+	register_taxonomy( 'mentions', "$p2_custom_post_type", array( 'hierarchical' => false, 'label' => 'Mentions', 'query_var' => true, 'rewrite' => true ) );
 	p2_flush_rewrites();
 }
 
@@ -105,7 +105,7 @@ function p2_flush_rewrites() {
 	if( false == get_option('p2_rewrites_flushed') ) {
 		update_option('p2_rewrites_flushed', true);
 		global $wp_rewrite;
-		$wp_rewrite->flush_rules();
+		$wp_rewrite->flush_rules(false);
 	}
 }
 
@@ -567,6 +567,8 @@ function p2_admin_header_style() {
 }
 
 function p2_header_style() {
+global $is_page_or_template_for_custom_post_type;
+	if ($is_page_or_template_for_custom_post_type) {
 ?>
 	<style type="text/css">
 		<?php if ( '' != get_header_image() ) : ?>
@@ -612,6 +614,7 @@ function p2_header_style() {
 		<?php } ?>
 	</style>
 <?php
+	}
 }
 add_custom_image_header( 'p2_header_style', 'p2_admin_header_style' );
 

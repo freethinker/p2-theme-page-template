@@ -2,11 +2,13 @@ var loggedin = false;
 
 jQuery(function($) {
 
-/*	jQuery.ajaxSetup({"error":function(XMLHttpRequest,textStatus, errorThrown) {   
-      alert(textStatus);
-      alert(errorThrown);
-      alert(XMLHttpRequest.responseText);
-  }});*/
+	jQuery.ajaxSetup({"error":function(XMLHttpRequest,textStatus, errorThrown) {   
+		if(isUserLoggedIn) {
+			alert(textStatus);
+			alert(errorThrown);
+			alert(XMLHttpRequest.responseText);
+		}
+  }});
 
 	edCanvas = document.getElementById('posttext');
 	jQuery('#comment-submit').live( 'click', function() {
@@ -110,7 +112,6 @@ jQuery(function($) {
 		if (showNotification == null) {
 			showNotification = true;
 		}
-		alert("getting new posts");
 		toggleUpdates('unewposts');
 		var queryString = ajaxUrl +'&action=get_latest_posts&load_time=' + pageLoadTime + '&frontpage=' + isAsidePage;
 		ajaxCheckPosts = $.getJSON(queryString, function(newPosts){
