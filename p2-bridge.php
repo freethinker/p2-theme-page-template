@@ -5,7 +5,7 @@ $p2_custom_post_type_template = '/' . $p2_custom_post_type . '.php';
 //$p2_custom_post_type_template = '/p2/single.php';
 $p2_custom_post_type_name = 'Asides';
 $p2_custom_post_type_singular_name = 'Aside';
-$p2_custom_post_type_page_slug = 'asides';
+$p2_custom_post_type_page_slug = 'mblog';
 
 add_action( 'init', 'create_post_type' );
 add_action( 'init', 'aside_add_default_boxes' );
@@ -57,7 +57,7 @@ function create_post_type() {
 			'singular_name' => __( "$p2_custom_post_type_singular_name" )
 			),
 			'public' => true,
-			'supports' => array( 'title', 'editor', 'thumbnail', 'trackbacks', 'comments' ),			
+			'supports' => array( 'title', 'editor', 'thumbnail', 'trackbacks', 'comments', 'custom-fields' ),			
 			'capability_type' => 'post',
 		)
 	);
@@ -123,7 +123,7 @@ function p2_comments_template ($template) {
 
 function p2_get_posts( $query ) {
 	global $p2_custom_post_type;
-	if ( (is_tag() || is_category() || is_author()) && false == $query->query_vars['suppress_filters'] ) {
+	if ( ((is_tag() || is_category() || is_author()) && false == $query->query_vars['suppress_filters']) || is_feed() ) {
 		$query->set( 'post_type', array( 'post', $p2_custom_post_type ) );
 	}
 	return $query;

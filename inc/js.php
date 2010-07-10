@@ -5,10 +5,10 @@ add_action( 'init', array('P2JS', 'init') );
 class P2JS {
 	
 	function init() {
-		if ( !is_admin() ) {
-			add_action( 'wp_print_scripts', array('P2JS', 'enqueue_scripts') );
-		}
-		add_action('wp_head', array('P2JS', 'print_options'));
+			if ( !is_admin() ) {
+				add_action( 'wp_print_scripts', array('P2JS', 'enqueue_scripts') );
+			}
+			add_action('wp_head', array('P2JS', 'print_options'));
 	}
 	
 	function enqueue_scripts() {
@@ -95,7 +95,7 @@ class P2JS {
 		}
 		?>
 		var ajaxUrl = "<?php echo esc_js( p2_url( '/wp-admin/admin-ajax.php?p2ajax=true' ) ); ?>";
-		var updateRate = "3000";
+		var updateRate = "30000";
 		var nonce = "<?php echo esc_js( $page_options['nonce'] ); ?>";
 		var login_url = "<?php echo $page_options['login_url'] ?>";
 		var templateDir  = "<?php esc_js( bloginfo('template_directory') ); ?>";
