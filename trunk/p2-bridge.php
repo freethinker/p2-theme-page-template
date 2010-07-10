@@ -72,8 +72,9 @@ function is_p2_custom_post_type() {
 
 
 function aside_add_default_boxes() {
-    register_taxonomy_for_object_type('category', 'aside');
-    register_taxonomy_for_object_type('post_tag', 'aside');
+	global $p2_custom_post_type;
+    register_taxonomy_for_object_type('category', $p2_custom_post_type);
+    register_taxonomy_for_object_type('post_tag', $p2_custom_post_type);
 }
 
 function p2_enqueue_css() {
