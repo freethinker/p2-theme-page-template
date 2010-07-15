@@ -275,6 +275,26 @@ HTML;
 		return $html;
 }
 
+function cats_with_count( $format = 'list', $before = '', $sep = '', $after = '' ) {
+	global $post;
+	$posttags = get_the_terms($post->ID, 'category');
+
+	if ( !$posttags )
+		return;
+
+	foreach ( $posttags as $tag ) {
+			$tag_link = '<a href="' . get_term_link($tag, 'category') . '" rel="category">' . $tag->name . '</a>';
+
+		if ( $format == 'list' )
+			$tag_link = '<li>' . $tag_link . '</li>';
+
+		$tag_links[] = $tag_link;
+	}
+
+	echo $before . join( $sep, $tag_links ) . $after;
+}
+
+
 function tags_with_count( $format = 'list', $before = '', $sep = '', $after = '' ) {
 	global $post;
 	$posttags = get_the_tags($post->ID, 'post_tag');
@@ -283,11 +303,7 @@ function tags_with_count( $format = 'list', $before = '', $sep = '', $after = ''
 		return;
 
 	foreach ( $posttags as $tag ) {
-		if ( $tag->count > 1 && !is_tag($tag->slug) ) {
-			$tag_link = '<a href="' . get_term_link($tag, 'post_tag') . '" rel="tag">' . $tag->name . ' (' . number_format_i18n( $tag->count ) . ')</a>';
-		} else {
-			$tag_link = $tag->name;
-		}
+			$tag_link = '<a href="' . get_term_link($tag, 'post_tag') . '" rel="tag">' . $tag->name . '</a>';
 
 		if ( $format == 'list' )
 			$tag_link = '<li>' . $tag_link . '</li>';
