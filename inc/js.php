@@ -77,6 +77,7 @@ class P2JS {
 		$page_options['is_page'] = (int)is_page();
 		$page_options['is_front_page'] = (int)is_front_page();
 		$page_options['is_aside_page'] = (int)$is_page_template_page;
+		$page_options['is_p2_custom_post_type'] = (int)is_p2_custom_post_type();
 		$page_options['is_first_front_page'] = (int)(is_front_page() && !is_paged() );
 		$page_options['is_user_logged_in'] = (int)is_user_logged_in();
 		$page_options['login_url'] = wp_login_url( ( ( !empty($_SERVER['HTTPS'] ) && strtolower($_SERVER['HTTPS']) == 'on' ) ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] );
@@ -103,6 +104,7 @@ class P2JS {
 		var isFirstFrontPage = <?php echo $page_options['is_first_front_page'] ?>;
 		var isFrontPage = <?php echo $page_options['is_front_page'] ?>;
 		var isAsidePage = <?php echo $page_options['is_aside_page'] ?>;
+		var isP2CustomPostType = <?php echo $page_options['is_p2_custom_post_type'] ?>;
 		var isSingle = <?php echo $page_options['is_single'] ?>;
 		var isPage = <?php echo $page_options['is_page'] ?>;
 		var isUserLoggedIn = <?php echo $page_options['is_user_logged_in'] ?>;

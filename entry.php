@@ -31,6 +31,9 @@
 						| <a href="<?php echo ( get_edit_post_link( get_the_id() ) ) ?>" class="edit-post-link" rel="<?php the_ID() ?>"><?php _e( 'Edit', 'p2' ) ?></a>
 					<?php endif; ?>
 				</span>
+				<span class="cats">
+					<?php cats_with_count( '', __( '<br />Category:' , 'p2' ) .' ', ', ', ' &nbsp;' ) ?>&nbsp;
+				</span>
 				<span class="tags">
 					<?php tags_with_count( '', __( '<br />Tags:' , 'p2' ) .' ', ', ', ' &nbsp;' ) ?>&nbsp;
 				</span>
