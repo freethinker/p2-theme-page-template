@@ -124,11 +124,19 @@ function p2_comments_template ($template) {
 
 function p2_get_posts( $query ) {
 	global $p2_custom_post_type;
-	if ( ((is_tag() || is_category() || is_author()) && false == $query->query_vars['suppress_filters']) || is_feed() ) {
+	if ( (is_tag() || is_category() || is_author() || is_archive() ) && false == $query->query_vars['suppress_filters'] )  {
 		$query->set( 'post_type', array( 'post', $p2_custom_post_type ) );
 	}
 	return $query;
 }
+
+function p2_feed_request($qv) {
+	if (isset($qv['feed']) && !isset($qv['post_type']))
+		$qv['post_type'] = get_post_types();
+	return $qv;
+}
+add_filter('request', 'p2_feed_request');
+
 
 function p2_add_to_footer() {
 	global $is_page_or_template_for_custom_post_type;
