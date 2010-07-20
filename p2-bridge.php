@@ -122,6 +122,21 @@ function p2_comments_template ($template) {
 	return locate_template( $templates );
 }
 
+function p2_comment_form_after() {
+	global $is_page_or_template_for_custom_post_type;
+	if ($is_page_or_template_for_custom_post_type) {
+?>
+		<label class="post-error" for="comment" id="commenttext_error"></label>
+		<span class="progress">
+			<img src="<?php echo str_replace( WP_CONTENT_DIR, content_url(), locate_template( array( 'p2/i/indicator.gif' ) ) ) ?>" alt="<?php esc_attr_e( 'Loading...', 'p2' ); ?>" title="<?php esc_attr_e( 'Loading...', 'p2' ); ?>" />
+		</span>
+<?php
+	}
+	
+}
+
+add_action('comment_form', 'p2_comment_form_after', 100, 0);
+
 function p2_get_posts( $query ) {
 	global $p2_custom_post_type;
 	if ( (is_tag() || is_category() || is_author() || is_archive() ) && false == $query->query_vars['suppress_filters'] )  {

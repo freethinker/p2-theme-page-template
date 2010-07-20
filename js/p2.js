@@ -148,10 +148,10 @@ jQuery(function($) {
 
 		$('#cancel-comment-reply-link').click(function() {
 			$('#comment').val('');
-			if (!isSingle) $("#p2respond").hide();
+			if (!isSingle) $("#respond").hide();
 			$(this).parents("li").removeClass('replying');
-			$(this).parents('#p2respond').prev("li").removeClass('replying');
-			$("#p2respond").removeClass('replying');
+			$(this).parents('#respond').prev("li").removeClass('replying');
+			$("#respond").removeClass('replying');
 		});
 
 		// Activate keyboard navigation
@@ -411,7 +411,7 @@ jQuery(function($) {
 				newComment(trigger);
 				trigger.preventDefault();
 				$(this).parents("li").removeClass('replying');
-				$(this).parents('#p2respond').prev("li").removeClass('replying');
+				$(this).parents('#respond').prev("li").removeClass('replying');
 			});
 
 		// Hide error messages on load
@@ -696,9 +696,9 @@ jQuery(function($) {
 			url: ajaxUrl,
 			data: dataString,
 			success: function(result) {
-				$('#p2respond .progress').hide();
-				$("#p2respond").slideUp( 200, function() {
-					var lastComment = $("#p2respond").prev("li");
+				$('#respond .progress').hide();
+				$("#respond").slideUp( 200, function() {
+					var lastComment = $("#respond").prev("li");
 					if (isNaN(result) || 0 == result || 1 == result)
 						errorMessage = result;
 					$('#comment').val('');
@@ -841,8 +841,8 @@ jQuery(function($) {
 		$(element).find('a.comment-reply-link').click( function(event) {
 			$('*').removeClass('replying');
 			$(this).parents("li").eq(0).addClass('replying');
-			$("#p2respond").show();
-			$("#p2respond").addClass('replying').show();
+			$("#respond").show();
+			$("#respond").addClass('replying').show();
 			$("#comment").focus();
 		});
 

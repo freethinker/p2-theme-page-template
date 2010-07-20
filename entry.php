@@ -19,18 +19,6 @@
 			?>
 			<span class="meta">
 					<?php echo p2_date_time_with_microformat($p2_custom_post_type) ?>
-				<span class="actions">
-					<?php if ( !is_single() ) : ?>
-						<a href="<?php the_permalink() ?>" class="thepermalink"><?php _e( 'Permalink', 'p2' ) ?></a>
-						<?php echo post_reply_link( array( 'before' => ' | ', 'after' => '',  'reply_text' => __('Reply', 'p2'), 'add_below' => 'prologue', 'respond_id' => 'p2respond'), get_the_id() ) ?>
-					<?php else : ?>
-						<?php if( comments_open() ) echo post_reply_link( array( 'before' => '', 'after' => '',  'reply_text' => __('Reply', 'p2'), 'add_below' => 'prologue', 'respond_id' => 'p2respond'), get_the_id() ) ?>
-					<?php endif;?>
-					
-					<?php if ( current_user_can('edit_post', get_the_id() ) ) : ?>
-						| <a href="<?php echo ( get_edit_post_link( get_the_id() ) ) ?>" class="edit-post-link" rel="<?php the_ID() ?>"><?php _e( 'Edit', 'p2' ) ?></a>
-					<?php endif; ?>
-				</span>
 				<span class="cats">
 					<?php cats_with_count( '', __( '<br />Category:' , 'p2' ) .' ', ', ', ' &nbsp;' ) ?>&nbsp;
 				</span>
@@ -63,6 +51,22 @@
 		
 		<?php endif; ?>
 	</div>
+	<h4>
+		<span class="meta">
+			<span class="actions">
+				<?php if ( !is_single() ) : ?>
+					<a href="<?php the_permalink() ?>" class="thepermalink"><?php _e( 'Permalink', 'p2' ) ?></a>
+					<?php echo post_reply_link( array( 'before' => ' | ', 'after' => '',  'reply_text' => __('Reply', 'p2'), 'add_below' => 'prologue', 'respond_id' => 'respond'), get_the_id() ) ?>
+				<?php else : ?>
+					<?php if( comments_open() ) echo post_reply_link( array( 'before' => '', 'after' => '',  'reply_text' => __('Reply', 'p2'), 'add_below' => 'prologue', 'respond_id' => 'respond'), get_the_id() ) ?>
+				<?php endif;?>
+				
+				<?php if ( current_user_can('edit_post', get_the_id() ) ) : ?>
+					| <a href="<?php echo ( get_edit_post_link( get_the_id() ) ) ?>" class="edit-post-link" rel="<?php the_ID() ?>"><?php _e( 'Edit', 'p2' ) ?></a>
+				<?php endif; ?>
+			</span>
+		</span>
+	</h4>
 
 	<?php if ( get_comments_number() > 0 ) : ?>
 		<div class="discussion" style="display: none">
@@ -73,18 +77,15 @@
 		</div>
 	<?php endif; ?>
 	<?php wp_link_pages(); ?>
-	<div class="bottom_of_entry">&nbsp;</div>
 
 	<?php if ( !p2_is_ajax_request() ) : ?>
 		<?php comments_template() ?>
 		<?php $pc = 0; ?>
 		<?php if ( p2_show_comment_form() && $pc == 0) : ?>
 				<?php $pc++; ?>
-				<div id="p2respond" <?php if( !is_single() ): ?>style="display: none; "<?php endif; ?>>
-					<?php locate_template( array( 'p2/comment-form.php' ), true ) ?>
-				</div>
-
+				<?php comment_form(); ?>
 		<?php endif; ?>
 
 	<?php endif; ?>
+
 </li>
