@@ -259,12 +259,16 @@ function p2_comments( $comment, $args, $echocomment = true ) {
         $author_link
         <span class="meta">
             $date_time
-            <span class="actions"><a href="$permalink">$permalink_text</a> $reply_link $edit_link</span>
         </span>
     </h4>
     <div class="$content_class" id="commentcontent-$id">
         $comment_text
-    </div>
+   </div>
+	<h4>
+        <span class="meta">
+            <span class="actions"><a href="$permalink">$permalink_text</a> $reply_link $edit_link</span>
+        </span>
+	</h4>
 HTML;
 	if(!is_single() && get_comment_type() != 'comment')
 		return false;
@@ -476,7 +480,7 @@ if ( strstr( $_SERVER['HTTP_USER_AGENT'], 'iPhone' ) or isset($_GET['iphone']) &
 function prologue_get_comment_reply_link( $args = array(), $comment = null, $post = null ) {
 	global $user_ID;
 
-	$defaults = array('add_below' => 'comment', 'respond_id' => 'p2respond', 'reply_text' => __('Reply', 'p2'),
+	$defaults = array('add_below' => 'comment', 'respond_id' => 'respond', 'reply_text' => __('Reply', 'p2'),
 		'login_text' => __('Log in to Reply', 'p2'), 'depth' => 0, 'before' => '', 'after' => '');
 
 	$args = wp_parse_args($args, $defaults);

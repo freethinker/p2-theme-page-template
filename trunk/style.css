@@ -7,12 +7,17 @@ Tags: blue, two-columns, fixed-width, rtl-language-support, right-sidebar, white
 Description: A group blog theme for short update messages, inspired by Twitter. Featuring: Hassle-free posting from the front page. Perfect for group blogging, or as a liveblog theme. Dynamic page updates. Threaded comment display on the front page. In-line editing for posts and comments. Live tag suggestion based on previously used tags. A show/hide feature for comments, to keep things tidy. Real-time notifications when a new comment or update is posted. Super-handy keyboard shortcuts. Helvetica Neue for you modern font lovers. And more to come...
 */
 
-.p2blog h4, .p2blog .entry-content h4 {
+.p2blog .entry-content .commentlist h4, .p2blog .entry-content h4 {
 	margin: 0;
 	padding: 0;
 	font-size: 11px;
 	line-height: 12px;
 	font-weight: normal;
+	height: 12px;
+}
+
+.p2blog .entry-content h4.p2meta {
+	height: 40px;
 }
 
 .p2blog .entry-content {
@@ -135,10 +140,8 @@ form#new_post {
 	border: solid;
 	border-width: 1px;
 }
-.p2blog #p2respond #submit, input#comment-submit {
-	width: auto;
-}
-input#comment-submit {
+
+.p2blog input#comment-submit {
 	clear: both;
 }
 .p2blog ul#postlist {
@@ -161,7 +164,6 @@ h2.p2announcement {
 }
 
 .p2blog h2 {
-	padding-top: 10px;
 	padding-bottom: 5px;
 	line-height: 1.1em;
 }
@@ -310,12 +312,12 @@ h2 img {
 .p2blog input {
 	margin: 4px 0;
 }
-#postpage #p2respond {
+#postpage #respond {
 	width: 70%;
 	margin-bottom: 20px;
 	margin-left: 72px;
 }
-.p2blog #p2respond, .textedit {
+.p2blog #respond, .textedit {
 	padding: 14px 16px 12px;
 	margin-bottom: 10px;
 	margin-left: 64px;
@@ -327,34 +329,28 @@ h2 img {
 .textedit {
 	margin-left: 0;
 }
-.p2blog .commentlist #p2respond.replying {
+.p2blog .commentlist #respond.replying {
 	margin-left: 44px;
 }
-.p2blog .commentlist li #p2respond.replying {
+.p2blog .commentlist li #respond.replying {
 	margin-left: 93px;
 }
-.p2blog #p2respond textarea, .textedit textarea {
+.p2blog #respond textarea, .textedit textarea {
 	width: 94%;
 	padding: 6px;
 	border-width: 1px;
 	border-style: solid;
 }
-#postpage #p2respond p {
+#postpage #respond p {
 	margin-right: 0;
 }
-.p2blog #p2respond p, .p2blog li ul #p2respond p {
-	float: right;
-	margin-right: 10%;
-	padding-right: 5px;
-	margin-top: 5px;
-}
-#postpage li ul #p2respond p {
+#postpage li ul #respond p {
 	margin-right: 5%;
 }
-#postpage #p2respond textarea {
+#postpage #respond textarea {
 	width: 96%;
 }
-#postpage li ul #p2respond textarea {
+#postpage li ul #respond textarea {
 	width: 94% !important;
 }
 .commentcontent {
@@ -362,6 +358,8 @@ h2 img {
 }
 .commentlist {
 	margin-bottom: 5px;
+}
+.p2blog ul.children {
 }
 .commentlist .children {
 	margin: 0 !important;
@@ -622,7 +620,7 @@ a.hidemessage {
 	width: 20px;
 	display: none;
 }
-.p2blog #p2respond .progress {
+.p2blog #respond .progress {
 	position: static;
 	margin-top: 5px;
 	padding-left: 0px;
@@ -834,6 +832,7 @@ div.entry {
 }
 .p2blog #postlist .commentlist li {
 	border-top-color: #ddd;
+	margin-top: 7px;
 }
 #postbox .avatar img {
 	border-color: #ccc;
@@ -866,10 +865,10 @@ div.entry {
 .p2blog p img {
 	border-color: #eee;
 }
-.p2blog #p2respond, .textedit {
+.p2blog #respond, .textedit {
 	background: #f1f1f1;
 }
-.p2blog #p2respond textarea, .textedit textarea {
+.p2blog #respond textarea, .textedit textarea {
 	border-color: #ccc;
 }
 .p2blog span.meta {
@@ -1052,14 +1051,14 @@ h4, h5, h6 {
 	font-size: 1em;
 	line-height: 1.4em;
 }
-.p2blog #p2respond #cancel-comment-reply-link {
+.p2blog #respond #cancel-comment-reply-link {
 	font-weight: normal;
 }
-.p2blog #p2respond h3 small {
+.p2blog #respond h3 small {
 	font-weight: normal;
 	font-size: .7em;
 }
-.p2blog #p2respond textarea, .textedit textarea {
+.p2blog #respond textarea, .textedit textarea {
 	font-size: 12px;
 }
 .p2blog span.meta {
