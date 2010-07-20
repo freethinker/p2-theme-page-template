@@ -245,6 +245,7 @@ class P2Ajax {
 			if ( get_option('comment_registration') ) {
 			    die('<p>'.__('Error: you must be logged in to post a comment.', 'p2').'</p>');
 			}
+			do_action('pre_comment_on_post', $comment_post_ID);
 			$comment_author       = ( isset($_POST['author']) )  ? trim(strip_tags($_POST['author'])) : null;
 			$comment_author_email = ( isset($_POST['email']) )   ? trim($_POST['email']) : null;
 			$comment_author_url   = ( isset($_POST['url']) )     ? trim($_POST['url']) : null;

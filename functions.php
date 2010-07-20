@@ -255,7 +255,7 @@ function p2_comments( $comment, $args, $echocomment = true ) {
 	$html = <<<HTML
 <li $comment_class id="comment-$id">
     $avatar
-    <h4>
+    <h4 class="p2meta">
         $author_link
         <span class="meta">
             $date_time
