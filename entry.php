@@ -67,7 +67,7 @@
 			</span>
 		</span>
 	</h4>
-
+	<?php p2_after_content(); //After content hook ?>
 	<?php if ( get_comments_number() > 0 ) : ?>
 		<div class="discussion" style="display: none">
 			<p>

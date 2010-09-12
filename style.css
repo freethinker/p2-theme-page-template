@@ -531,57 +531,6 @@ img.alignleft {
 	margin-right: auto;
 }
 
-.wp-caption, .gallery-icon {
-	margin-bottom: 18px;
-}
-.wp-caption a:hover {
-	border: none;
-}
-.gallery {
-	display: block !important;
-	margin: 0 !important;
-	padding: 0 0 1.5em 0 !important;
-}
-.gallery-icon {
-	width: auto !important;
-	margin-bottom: 4px;
-	padding: 4px;
-}
-.gallery-icon img {
-	border-style: solid;
-	border-width: 1px;
-	padding: 4px 4px 0;
-	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
-	-webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
-	-moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
-	margin: 0 auto;
-}
-.gallery-icon a:hover {
-	border: none;
-}
-.gallery-icon img.attachment-thumbnail {
-	border: none !important;
-	padding: 0;
-}
-.gallery-caption {
-	clear: both;
-	padding: 4px;
-}
-.gallery-item {
-	display: inline-block !important;
-	padding-bottom: 1px;
-	margin: 0 auto !important;
-	float: none !important;
-}
-.wp-caption img {
-	margin: 0;
-	padding: 0;
-	border: none;
-}
-.wp-caption p.wp-caption-text {
-	padding: 0 7px;
-	margin: 0;
-}
 .liveupdates {
 	min-height: 30px;
 	margin: 0 0 10px;
@@ -875,12 +824,7 @@ div.entry {
 .p2blog span.meta {
 	color: #888;
 }
-.wp-caption, .gallery-icon {
-	border-color: #ddd;
-	border-color: rgba(255,255,255,0);
-	background: #fff;
-	text-shadow: 0 1px 0 #fff;
-}
+
 .liveupdates {
 	color: #464646;
 	background: #E4F2FD;
