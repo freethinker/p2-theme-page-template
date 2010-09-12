@@ -140,14 +140,20 @@ add_action('comment_form', 'p2_comment_form_after', 100, 0);
 function p2_get_posts( $query ) {
 	global $p2_custom_post_type;
 	if ( (is_tag() || is_category() || is_author() || is_archive() ) && false == $query->query_vars['suppress_filters'] )  {
+	//if ( (is_tag() || is_category() || is_author() || is_archive() ) )  {
 		$query->set( 'post_type', array( 'post', $p2_custom_post_type ) );
 	}
 	return $query;
 }
 
 function p2_feed_request($qv) {
-	if (isset($qv['feed']) && !isset($qv['post_type']))
-		$qv['post_type'] = get_post_types();
+	if (isset($qv['feed']) && !isset($qv['post_type'])) {
+		$qv['post_type'] = get_post_types($args = array(
+	  		'public'   => true,
+	  		'_builtin' => false
+		));
+		array_push($qv['post_type'],'post');
+	}
 	return $qv;
 }
 add_filter('request', 'p2_feed_request');

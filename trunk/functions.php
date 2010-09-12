@@ -143,6 +143,9 @@ function p2_at_name_highlight( $c ) {
 	return $c;
 }
 
+function p2_after_content() {
+	do_action('p2_after_content');
+}
 
 // Widgets
 function prologue_flush_tag_cache() {
